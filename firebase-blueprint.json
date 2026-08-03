@@ -1,0 +1,107 @@
+{
+  "entities": {
+    "users": {
+      "title": "Users",
+      "description": "Registered campus users and administrators",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string" },
+        "department": { "type": "string" },
+        "ecoPoints": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "devices": {
+      "title": "Devices",
+      "description": "Registered hardware devices and e-waste assets",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "uid": { "type": "string" },
+        "category": { "type": "string" },
+        "brand": { "type": "string" },
+        "model": { "type": "string" },
+        "status": { "type": "string" },
+        "ownerName": { "type": "string" },
+        "department": { "type": "string" },
+        "currentLocation": { "type": "string" },
+        "registeredAt": { "type": "string" }
+      },
+      "required": ["id", "uid", "category", "status"]
+    },
+    "testResults": {
+      "title": "Test Results",
+      "description": "Hardware diagnostics and health assessment results",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "deviceId": { "type": "string" },
+        "uid": { "type": "string" },
+        "overallScore": { "type": "number" },
+        "grade": { "type": "string" },
+        "testedAt": { "type": "string" }
+      },
+      "required": ["id", "deviceId", "overallScore"]
+    },
+    "marketplace": {
+      "title": "Marketplace Listings",
+      "description": "Second-life refurbish and hardware resale listings",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "deviceId": { "type": "string" },
+        "sellerUid": { "type": "string" },
+        "price": { "type": "number" },
+        "status": { "type": "string" },
+        "listedAt": { "type": "string" }
+      },
+      "required": ["id", "deviceId", "price", "status"]
+    },
+    "repairRequests": {
+      "title": "Repair Requests",
+      "description": "Dispatched maintenance and repair service jobs",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "deviceId": { "type": "string" },
+        "uid": { "type": "string" },
+        "issueDescription": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "deviceId", "status"]
+    },
+    "pickupRequests": {
+      "title": "Pickup Requests",
+      "description": "Scheduled certified e-waste pickup dispatches",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "deviceId": { "type": "string" },
+        "uid": { "type": "string" },
+        "pickupDate": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "deviceId", "status"]
+    },
+    "deviceTracking": {
+      "title": "Device Tracking Events",
+      "description": "Logistics history and GPS tracking logs",
+      "type": "object",
+      "properties": {
+        "trackingId": { "type": "string" },
+        "deviceId": { "type": "string" },
+        "uid": { "type": "string" },
+        "status": { "type": "string" },
+        "location": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["trackingId", "deviceId", "status"]
+    }
+  }
+}

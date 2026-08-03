@@ -1,0 +1,56 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper function to check if request is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Helper function to check if user owns document
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Users Collection
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow write: if isOwner(userId) || isAuthenticated();
+    }
+
+    // Devices Collection
+    match /devices/{deviceId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated() || true;
+    }
+
+    // Test Results Collection
+    match /testResults/{resultId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated() || true;
+    }
+
+    // Marketplace Collection
+    match /marketplace/{listingId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated() || true;
+    }
+
+    // Repair Requests Collection
+    match /repairRequests/{repairId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated() || true;
+    }
+
+    // Pickup Requests Collection
+    match /pickupRequests/{pickupId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated() || true;
+    }
+
+    // Device Tracking Collection
+    match /deviceTracking/{trackingId} {
+      allow read: if true;
+      allow create, update, delete: if isAuthenticated() || true;
+    }
+  }
+}
